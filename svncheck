@@ -1,12 +1,23 @@
 #!/usr/bin/php
 <?php
 
-require dirname( __FILE__ ) . '/vendor/autoload.php';
+require dirname( dirname( __FILE__ ) ) . '/vendor/autoload.php';
 
 use iaskakho\svn\Svn;
 
 $objSvn = new Svn( '/home/mirror' );
 
-// $argv
+if ( isset( $argv[1] ) ) {
+    $strMethod = $argv[1];
+    if ( method_exists( $objSvn, $strMethod )  ) {
+        printf( 'RUNNING "%s"...' . PHP_EOL . PHP_EOL, $strMethod );
+        $boolVerbose = isset( $argv[2] ) && $argv[2] == 'true';
+        $objSvn->$strMethod( $boolVerbose );
+    } else {
+        printf( 'Method "%s" doesn\'t exist!' . PHP_EOL, $strMethod );
+    }
+} else {
+    printf( 'Argument [1], should be method of Svn class, [2] can be verbose.' . PHP_EOL );
+}
 // $objSvn->status( true );
 // $objSvn->rmrpm();
