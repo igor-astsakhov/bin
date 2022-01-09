@@ -1,10 +1,12 @@
 #!/usr/bin/php
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
+require dirname( __FILE__ ) . '/vendor/autoload.php';
 
 use iaskakho\svn\Svn;
 
 $objSvn = new Svn( '/home/mirror' );
+
+// $argv
 // $objSvn->status( true );
 // $objSvn->rmrpm();
