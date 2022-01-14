@@ -5,6 +5,7 @@ require dirname( dirname( __FILE__ ) ) . '/vendor/autoload.php';
 
 use iaskakho\svn\Svn;
 
+/** @var $objSvn \iaskakho\svn\Svn */
 $objSvn = new Svn( '/home/mirror' );
 
 if ( isset( $argv[1] ) ) {
